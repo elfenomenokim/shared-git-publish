@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a reproducible publication or adoption problem.
+title: "[Bug]: "
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: Package, Git, and Python versions
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Operating system and filesystem
+    validations:
+      required: true
+  - type: textarea
+    id: reproducer
+    attributes:
+      label: Command and reproducer
+      description: Use temporary repositories and example data.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual results
+      description: Include the JSON result and exit status, with private values removed.
+    validations:
+      required: true

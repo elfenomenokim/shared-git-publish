@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shared-git-publish"
+version = "0.1.0"
+description = "Publish explicit Git work and advance shared checkouts while preserving local edits."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "El Fenomeno" }]
+keywords = ["git", "shared-checkout", "git-index", "concurrency", "cli"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Operating System :: MacOS",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Software Development :: Version Control :: Git",
+]
+dependencies = ["feno-atomic-write>=0.1.2,<0.2", "run-bounded>=0.2.0,<0.3"]
+
+[project.urls]
+Repository = "https://github.com/elfenomenokim/shared-git-publish"
+Issues = "https://github.com/elfenomenokim/shared-git-publish/issues"
+
+[project.scripts]
+shared-git-publish = "shared_git_publish.cli:main"
+
+[tool.setuptools]
+packages = ["shared_git_publish"]

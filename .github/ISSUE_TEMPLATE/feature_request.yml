@@ -1,0 +1,25 @@
+name: Feature request
+description: Describe a shared-checkout workflow the commands should cover.
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow
+      description: Describe the checkout state, incoming history, and the command you run.
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current result
+      description: Include the package version and the current result with private values removed.
+    validations:
+      required: true
+  - type: textarea
+    id: desired
+    attributes:
+      label: Desired result
+      description: Specify which remote, index and working-file changes you expect.
+    validations:
+      required: true
