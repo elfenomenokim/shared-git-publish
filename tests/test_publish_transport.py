@@ -19,7 +19,7 @@ class PublicationRecoveryTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory(prefix='publication-recovery-')
         self.root = Path(self.tmp.name)
         self.bare, self.repo = self.root / 'remote.git', self.root / 'local'
-        self.run_git(self.root, 'init', '--bare', str(self.bare))
+        self.run_git(self.root, 'init', '--bare', '-b', 'main', str(self.bare))
         self.run_git(self.root, 'init', '-b', 'main', str(self.repo))
         self.run_git(self.repo, 'config', 'user.name', 'Local')
         self.run_git(self.repo, 'config', 'user.email', 'local@example.invalid')

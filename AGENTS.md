@@ -35,7 +35,7 @@
 Run from this directory.
 
 ```sh
-.venv/bin/python -m pip install . 'pytest<9'
+.venv/bin/python -m pip install '.[test]'
 .venv/bin/python -m pytest -q tests
 .venv/bin/shared-git-publish --help
 ```

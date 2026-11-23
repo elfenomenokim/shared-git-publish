@@ -80,6 +80,13 @@ class AdoptStaleIndex(unittest.TestCase):
         self.assertEqual(self.git('rev-parse', 'HEAD'), self.head)
 
     def test_published_base_merge_keeps_disjoint_working_edit(self):
+        self.check_published_base_merge('false')
+
+    def test_published_base_merge_keeps_disjoint_working_edit_with_autocrlf_input(self):
+        self.check_published_base_merge('input')
+
+    def check_published_base_merge(self, autocrlf):
+        self.git('config', 'core.autocrlf', autocrlf)
         staged = b'top published\n\nunchanged middle\n\nbottom staged\n'
         self.target = self.publish({'runner.py': staged}, 'publish staged base')
         base_blob = self.git('rev-parse', self.target + ':runner.py')

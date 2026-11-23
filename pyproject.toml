@@ -22,6 +22,9 @@ classifiers = [
 ]
 dependencies = ["feno-atomic-write>=0.1.2,<0.2", "run-bounded>=0.2.0,<0.3"]
 
+[project.optional-dependencies]
+test = ["pytest<9", "pytest-timeout>=2.3,<3"]
+
 [project.urls]
 Repository = "https://github.com/elfenomenokim/shared-git-publish"
 Issues = "https://github.com/elfenomenokim/shared-git-publish/issues"
@@ -31,3 +34,8 @@ shared-git-publish = "shared_git_publish.cli:main"
 
 [tool.setuptools]
 packages = ["shared_git_publish"]
+
+[tool.pytest.ini_options]
+required_plugins = ["pytest-timeout>=2.3,<3"]
+timeout = 90
+timeout_method = "thread"

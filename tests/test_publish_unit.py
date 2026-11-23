@@ -44,10 +44,10 @@ class TestPublishUnitBase(unittest.TestCase):
         self.local_dir = os.path.join(self.test_dir, "local")
 
         # Initialize bare remote
-        subprocess.run(["git", "init", "--bare", self.bare_dir], check=True, capture_output=True)
+        subprocess.run(["git", "init", "--bare", "-b", "main", self.bare_dir], check=True, capture_output=True)
 
         # Initialize local repo
-        subprocess.run(["git", "init", self.local_dir], check=True, capture_output=True)
+        subprocess.run(["git", "init", "-b", "main", self.local_dir], check=True, capture_output=True)
         subprocess.run(["git", "-C", self.local_dir, "config", "user.name", "Tester"], check=True)
         subprocess.run(["git", "-C", self.local_dir, "config", "user.email", "tester@example.invalid"], check=True)
         subprocess.run(["git", "-C", self.local_dir, "remote", "add", "origin", self.bare_dir], check=True)
@@ -626,7 +626,7 @@ class BackupRefRetentionTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory(prefix='retention-test-')
         self.repo = self.tmp.name
         self.now = int(time.time())
-        self.run_git('init', '-q')
+        self.run_git('init', '-q', '-b', 'main')
         self.tree = self.run_git('write-tree')
         self.head = self.commit('Published base', 100)
         self.run_git('update-ref', 'refs/remotes/origin/main', self.head)

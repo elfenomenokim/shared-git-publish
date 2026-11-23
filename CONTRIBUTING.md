@@ -15,7 +15,7 @@ From the source directory, install into a virtual environment and run the suite.
 
 ```sh
 python3 -m venv .venv
-.venv/bin/python -m pip install . 'pytest<9'
+.venv/bin/python -m pip install '.[test]'
 .venv/bin/python -m pytest -q
 ```
 
